@@ -11,10 +11,7 @@ It contains no trained model, fitted vectorizer, prediction script or model-perf
    measures and feasibility analysis.
 2. Open `reports/m2_report.html` in a browser for the M1–M2 evidence and charts.
 3. Read `docs/DATA_CARD.md` for the dataset, preparation decisions, split policy and privacy limits.
-4. Follow `docs/EVALUATION_GUIDE.md` for the demonstration and viva preparation.
-
-The original project is preserved in Downloads. This folder is the M1–M2 evaluation version.
-See `docs/PROJECT_AUDIT.md` for the changes and excluded M3 components.
+4. Open `presentation/M1_M2_Evaluation.pptx` for the milestone presentation.
 
 ## Setup
 

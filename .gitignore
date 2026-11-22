@@ -5,3 +5,6 @@ __pycache__/
 .mplconfig/
 presentation/.build/
 .presentation-validation/
+docs/EVALUATION_GUIDE.md
+docs/PROJECT_AUDIT.md
+presentation/archive/
