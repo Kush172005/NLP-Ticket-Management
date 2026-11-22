@@ -1,0 +1,53 @@
+{
+  "source_revision": "57ec275d8078af65b7731c2a98be812d844a6d6b",
+  "sources": {
+    "banking77_train.csv": {
+      "url": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/57ec275d8078af65b7731c2a98be812d844a6d6b/banking_data/train.csv",
+      "sha256": "b06e26ac675513959a63135f11b94ea7786ed02da65db93a5650d8838cbc664b"
+    },
+    "banking77_test.csv": {
+      "url": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/57ec275d8078af65b7731c2a98be812d844a6d6b/banking_data/test.csv",
+      "sha256": "d12d6e3bc4c3103966ae786dc435913c0c563dfa328f5a3646d0e62cfeeb474d"
+    },
+    "categories.json": {
+      "url": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/57ec275d8078af65b7731c2a98be812d844a6d6b/banking_data/categories.json",
+      "sha256": "53261da888122daf2d120d925458631d9619e15d82e56052e7a42e535ce32b63"
+    },
+    "LICENSE.txt": {
+      "url": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/57ec275d8078af65b7731c2a98be812d844a6d6b/LICENSE",
+      "sha256": "7e7170e3cebf88a9f60c7b8421418323c09304da1af4d5e90f4da1dc1c8a2661"
+    }
+  },
+  "python": "3.14.0",
+  "packages": {
+    "pandas": "3.0.1",
+    "numpy": "2.4.2",
+    "scikit-learn": "1.8.0",
+    "matplotlib": "3.10.8"
+  },
+  "code": {
+    "config.py": "60e6ec77f849d7724338776aab32f7be7104df8ca626a718a7f97ac3d36dbb74",
+    "data_loader.py": "a361162e550901ac32ca3fb0fae1ea31c241e2bc12650999c485f8dc0bb90bfb",
+    "demo.py": "28a984870ce8b11a5be165ba77dd96d024ef8d9d081064fd17a687e52a602538",
+    "m2_preprocess.py": "c1f31cc641fe47a0169f59a48e0f9c36542c6e472572558084a251b4ac1c5664",
+    "preprocessing.py": "8c1fc99c5f1153b072532657e8fa987028ed0a349588ff1fc2965f33bf307bc0",
+    "reporting.py": "8964cbfc598b6621ba0b4be4f21e2c172b7ef5a538b124bb2b0735a5876c59f7",
+    "verify.py": "13169cfd19c55577b1641c8a4301f5585f6446b3dded8fe3fc3460973308740f",
+    "requirements.txt": "71f2569633b04e6b092eac111f6065a4975f0cb50bddf7e97224a932f6ea3389"
+  },
+  "artifacts": {
+    "data/processed/test.csv": "b7b6d53cb7c423e68215df368df83149a80b036c2cfdca644df7261bd7476f56",
+    "data/processed/train.csv": "eebf954eb053a8a840b6679772935aeeae3ab16def3beb14a0ec5b894458b9f6",
+    "data/processed/val.csv": "d2101b16f8fa0cad7e7292e350a6ce1b55b19207fe85ae54d18fd63019fd7a18",
+    "reports/class_distribution.csv": "11a75db54e2eee6dd99722dfe7828adc8e0f70de62ed55d5ffe27b7be1a98234",
+    "reports/class_distribution.png": "8fa62551c8ca77706882aa7e5260b6f40b5cad87184646301a152b437f6f829c",
+    "reports/cleaning_examples.csv": "aeb538539018ab46d9ac0d2d814a17fce348905a84a027997e4d0044f4eda2ee",
+    "reports/cleaning_lengths.png": "53fe7f4b73b62c86c60b610405394697e1656ce17f51e048e7f5a916ff4fcf05",
+    "reports/duplicate_pairs.csv": "50f02880f73ff0674f4cd5371aa3dbc95c21829b7e2be83498225f941ec7d2df",
+    "reports/m2_eda.png": "19996175377f07ff1ba0863973b9db31987f7bdf29bd6e75632fa24a3afd0d8a",
+    "reports/m2_report.html": "be5835684b81e09713cf6424c858dd8f1591f4a6a21e75144c379e11fce85dd9",
+    "reports/m2_stats.json": "4e92001d4f7499fb73d2c0e525aaba36d1b8b2e972c7f57f7277360a028c8a40",
+    "reports/removed_rows.csv": "57eb6c802382f2c9fba73c43b0207190bcbc946d5a171dd6b4734dec848d100f",
+    "reports/ticket_lengths.png": "6e37a65e0a8ad106ed62f832201e3257d216905d6a0dd5b88c0b6b2b6296febe"
+  }
+}

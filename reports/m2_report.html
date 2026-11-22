@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ticket Management System | M1 and M2 evidence</title>
+<style>
+body{font:16px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#203448;background:#f4f6f7;margin:0}
+main{max-width:1080px;margin:0 auto;padding:48px 30px;background:white}
+h1{font-size:38px;line-height:1.18;color:#153e5d} h2{margin-top:48px;color:#153e5d} h3{margin-top:28px}
+p,li{max-width:920px} .scope{color:#14736f;font-weight:600} nav a{margin-right:24px} a{color:#24557a}
+table{border-collapse:collapse;width:100%;font-size:14px;margin:20px 0}th,td{padding:10px 12px;border-bottom:1px solid #dae1e6;text-align:left;vertical-align:top}
+th{background:#eff4f7}img{width:100%;height:auto}code{background:#eef3f5;padding:3px 6px}.note{border-left:4px solid #d18432;padding:12px 18px;background:#fbf5ec}
+.scroll{overflow-x:auto} .numbers{font-size:23px;font-weight:600} @media print{body{background:white} main{padding:0}nav{display:none}h2{break-after:avoid}img{max-height:500px;object-fit:contain}}
+</style><main>
+<p class="scope">Industry Track / M1 and M2</p>
+<h1>Ticket Management System</h1><p>Banking support ticket classification: problem definition and data preparation.</p>
+<nav><a href="#m1">Business case</a><a href="#data">Dataset</a><a href="#cleaning">Preprocessing</a><a href="#splits">Splits</a><a href="#privacy">Privacy</a></nav>
+<p class="note">This version ends with prepared data. It contains no trained classifier, fitted vocabulary or prediction results.</p>
+<h2 id="m1">M1: Problem and business case</h2>
+<p>Support agents manually read and categorize incoming banking queries. Similar issues can receive inconsistent labels, increasing triage effort. The project aims to help agents categorize those queries while keeping a person responsible for uncertain cases.</p>
+<p><strong>Users:</strong> support agents, triage staff and support managers.<br>
+<strong>NLP task:</strong> map one English banking query to one of 77 intent labels in a later milestone.<br>
+<strong>Business objective:</strong> reduce categorization time and inconsistent assignments.</p>
+<p>Proposed future targets: macro F1 ≥ 0.80, accuracy ≥ 0.80 and a 20% reduction in median categorization time in an agent pilot. These are planning targets. We have not measured them in M1–M2.</p>
+<p>The full problem brief, feasibility analysis and measurement plan are in <a href="../docs/M1_PROBLEM_BRIEF.md">M1_PROBLEM_BRIEF.md</a>.</p>
+<h2 id="data">M2: Dataset and exploratory analysis</h2>
+<p class="numbers">13,083 queries &nbsp; / &nbsp; 77 intents &nbsp; / &nbsp; English banking</p>
+<p>PolyAI's Banking77 is suitable for the intent classification part of a banking support project. It provides text and intent labels. It does not provide sentiment, priority, routing or resolution labels.</p>
+<p>Source: <a href="https://github.com/PolyAI-LDN/task-specific-datasets">PolyAI repository</a>, CC BY 4.0.<br>Paper: <a href="https://aclanthology.org/2020.nlp4convai-1.5/">Casanueva et al., 2020</a>.<br>All four raw source files pass pinned SHA-256 verification.</p>
+<img src="m2_eda.png" alt="Training class sizes and query lengths">
+<p>Training class sizes range from 30 to 160 queries, a 5.33 ratio. This imbalance makes macro F1 and per-intent recall useful future measures. The median training query has 10 words. The mean is 11.95, with a standard deviation of 7.92. The 95th percentile is 29 words.</p>
+<p><a href="class_distribution.png">All 77 classes</a> · <a href="class_distribution.csv">Class counts CSV</a> · <a href="m2_stats.json">Complete statistics</a> · <a href="../docs/DATA_CARD.md">Data card</a></p>
+<h2 id="cleaning">Cleaning and exclusions</h2>
+<p>Source audit: both splits contain zero blank texts and zero blank labels. Cleaning normalizes Unicode, masks supported patterns, lowercases, expands common contractions and removes punctuation. Negations and stopwords remain. We do not stem, lemmatize or truncate.</p>
+<p>Training rows leave the pipeline for the first applicable reason below. Every removal has a source row ID in <a href="removed_rows.csv">removed_rows.csv</a>.</p>
+<table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Reason</th>
+      <th>Rows</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>overlap_with_official_test_group</td>
+      <td>54</td>
+    </tr>
+    <tr>
+      <td>duplicate_training_text</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <td>conflicting_training_labels</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+<h3>Examples from the official training data</h3>
+<p>The left column already masks supported numeric and contact patterns. No fabricated training examples are added.</p>
+<div class="scroll"><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>row_id</th>
+      <th>before_masked</th>
+      <th>after</th>
+      <th>label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>train_00000</td>
+      <td>I am still waiting on my card?</td>
+      <td>i am still waiting on my card</td>
+      <td>card_arrival</td>
+    </tr>
+    <tr>
+      <td>train_00007</td>
+      <td>What do I do if I still have not received my new card?</td>
+      <td>what do i do if i still have not received my new card</td>
+      <td>card_arrival</td>
+    </tr>
+    <tr>
+      <td>train_00001</td>
+      <td>What can I do if my card still hasn't arrived after &lt;number&gt; weeks?</td>
+      <td>what can i do if my card still has not arrived after &lt;number&gt; weeks</td>
+      <td>card_arrival</td>
+    </tr>
+    <tr>
+      <td>train_00574</td>
+      <td>Why do I see an extra £ &lt;number&gt; charge on my statement?</td>
+      <td>why do i see an extra &lt;number&gt; charge on my statement</td>
+      <td>extra_charge_on_statement</td>
+    </tr>
+  </tbody>
+</table></div>
+<img src="cleaning_lengths.png" alt="Query length before and after preprocessing">
+<h2 id="splits">Split construction and leakage checks</h2>
+<table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>rows</th>
+      <th>labels</th>
+      <th>groups</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>train</th>
+      <td>8490</td>
+      <td>77</td>
+      <td>8470</td>
+    </tr>
+    <tr>
+      <th>val</th>
+      <td>1415</td>
+      <td>77</td>
+      <td>1411</td>
+    </tr>
+    <tr>
+      <th>test</th>
+      <td>3080</td>
+      <td>77</td>
+      <td>3067</td>
+    </tr>
+  </tbody>
+</table>
+<p>All 3,080 official test rows retain their membership and labels. The remaining official training rows form train and validation using seed 42 and a grouped stratified split. Validation is 14.3% of retained training-source data. Every split includes all 77 intents.</p>
+<p>Exact normalized queries share a group. Queries with at least three distinct word trigrams also share a group when Jaccard similarity is at least 0.85. Groups connected to test text leave the training pool. The train/validation split keeps each remaining group together.</p>
+<ul><li>train val clean text overlap: <strong>0</strong></li><li>train val duplicate group overlap: <strong>0</strong></li><li>train test clean text overlap: <strong>0</strong></li><li>train test duplicate group overlap: <strong>0</strong></li><li>val test clean text overlap: <strong>0</strong></li><li>val test duplicate group overlap: <strong>0</strong></li></ul>
+<p class="note">These checks establish zero exact overlap and zero overlap under the defined lexical grouping rule. Semantic paraphrases can still remain. The dataset has no customer or conversation IDs for stronger separation.</p>
+<p>Official test internal duplicate rows after normalization: 9. We retain these benchmark rows and report them.</p>
+<h2 id="privacy">Privacy considerations</h2>
+<p>Masking runs in this order: URLs, emails, card-like numbers, phone-like numbers, then remaining numbers. Counts below show rows matching each rule after preceding replacements. They do not establish that a matched value is real personal data.</p>
+<table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>train</th>
+      <th>test</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>url</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>email</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>card</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>phone</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>number</th>
+      <td>205</td>
+      <td>49</td>
+    </tr>
+  </tbody>
+</table>
+<p>Processed data excludes an unmasked original-text column. Regexes can still miss names, addresses and alphanumeric account IDs. Raw benchmark data stays separate. The terminal demo runs locally and does not store entered queries. Real private tickets would require access controls and manual review of redaction.</p>
+<h2>Reproducibility and next milestone</h2>
+<p>Run <code>python m2_preprocess.py</code>, followed by <code>python verify.py</code>. The <a href="manifest.json">manifest</a> records source, code and output hashes plus environment versions. No network is needed when the supplied raw files are present.</p>
+<p>M3 will fit features and train models using training data. Validation will guide model selection. The test set remains reserved for later final evaluation. This submission reports data preparation only.</p>
+</main></html>

@@ -1,0 +1,6 @@
+row_id,before_masked,after,label
+train_00000,I am still waiting on my card?,i am still waiting on my card,card_arrival
+train_00007,What do I do if I still have not received my new card?,what do i do if i still have not received my new card,card_arrival
+train_00001,What can I do if my card still hasn't arrived after <number> weeks?,what can i do if my card still has not arrived after <number> weeks,card_arrival
+train_00574,Why do I see an extra £ <number> charge on my statement?,why do i see an extra <number> charge on my statement,extra_charge_on_statement
+train_00111,Can you please tell me where my card is? I ordered it <number> weeks ago!,can you please tell me where my card is i ordered it <number> weeks ago,card_arrival

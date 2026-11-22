@@ -1,20 +1,196 @@
 {
-  "source": "Official Banking77 CSVs; official test kept separate",
-  "raw_train_rows": 10003,
-  "raw_test_rows": 3080,
-  "n_classes": 77,
-  "train_duplicates_and_conflicts_removed": 45,
-  "clean_train_rows": 9958,
-  "train_rows": 8464,
-  "train_labels": 77,
-  "val_rows": 1494,
-  "val_labels": 77,
-  "test_rows": 3080,
-  "test_labels": 77,
-  "tfidf_vocab_size": 9036,
-  "class_min": 30,
-  "class_max": 159,
-  "imbalance_ratio": 5.3,
-  "avg_words": 12.0,
-  "p95_words": 29.0
+  "milestones": [
+    "M1",
+    "M2"
+  ],
+  "source_revision": "57ec275d8078af65b7731c2a98be812d844a6d6b",
+  "source_hashes": {
+    "banking77_train.csv": "b06e26ac675513959a63135f11b94ea7786ed02da65db93a5650d8838cbc664b",
+    "banking77_test.csv": "d12d6e3bc4c3103966ae786dc435913c0c563dfa328f5a3646d0e62cfeeb474d",
+    "categories.json": "53261da888122daf2d120d925458631d9619e15d82e56052e7a42e535ce32b63",
+    "LICENSE.txt": "7e7170e3cebf88a9f60c7b8421418323c09304da1af4d5e90f4da1dc1c8a2661"
+  },
+  "seed": 42,
+  "raw_quality": {
+    "train": {
+      "rows": 10003,
+      "labels": 77,
+      "missing_or_blank_text": 0,
+      "missing_or_blank_label": 0,
+      "exact_raw_duplicate_rows": 0,
+      "non_ascii_rows": 52
+    },
+    "test": {
+      "rows": 3080,
+      "labels": 77,
+      "missing_or_blank_text": 0,
+      "missing_or_blank_label": 0,
+      "exact_raw_duplicate_rows": 0,
+      "non_ascii_rows": 9
+    }
+  },
+  "privacy_pattern_rows": {
+    "train": {
+      "url": 0,
+      "email": 0,
+      "card": 0,
+      "phone": 0,
+      "number": 205
+    },
+    "test": {
+      "url": 0,
+      "email": 0,
+      "card": 0,
+      "phone": 0,
+      "number": 49
+    }
+  },
+  "removals": {
+    "overlap_with_official_test_group": 54,
+    "duplicate_training_text": 42,
+    "conflicting_training_labels": 2
+  },
+  "removed_total": 98,
+  "retained_official_train": 9905,
+  "splits": {
+    "train": {
+      "rows": 8490,
+      "labels": 77,
+      "groups": 8470
+    },
+    "val": {
+      "rows": 1415,
+      "labels": 77,
+      "groups": 1411
+    },
+    "test": {
+      "rows": 3080,
+      "labels": 77,
+      "groups": 3067
+    }
+  },
+  "split_policy": "First fold of seeded 7-fold StratifiedGroupKFold on retained official training data",
+  "near_duplicate_policy": {
+    "representation": "word trigram sets",
+    "jaccard_threshold": 0.85,
+    "minimum_distinct_trigrams": 3,
+    "transitive_groups": true
+  },
+  "duplicate_pairs": {
+    "exact": 48,
+    "near": 43
+  },
+  "leakage_checks": {
+    "train_val_clean_text_overlap": 0,
+    "train_val_duplicate_group_overlap": 0,
+    "train_test_clean_text_overlap": 0,
+    "train_test_duplicate_group_overlap": 0,
+    "val_test_clean_text_overlap": 0,
+    "val_test_duplicate_group_overlap": 0
+  },
+  "official_test_preserved": true,
+  "official_test_internal_clean_duplicates": 9,
+  "official_test_conflicting_clean_groups": 1,
+  "train_class_min": 30,
+  "train_class_max": 160,
+  "train_imbalance_ratio": 5.333,
+  "official_train_class_min": 35,
+  "official_train_class_max": 187,
+  "length_statistics_official_train": {
+    "count": 10003.0,
+    "mean": 11.949,
+    "std": 7.892,
+    "min": 2.0,
+    "50%": 10.0,
+    "95%": 29.0,
+    "99%": 43.0,
+    "max": 79.0
+  },
+  "length_statistics": {
+    "train": {
+      "raw_words": {
+        "count": 8490.0,
+        "mean": 11.946,
+        "std": 7.924,
+        "min": 2.0,
+        "25%": 7.0,
+        "50%": 10.0,
+        "75%": 13.0,
+        "95%": 29.0,
+        "99%": 43.0,
+        "max": 79.0
+      },
+      "clean_words": {
+        "count": 8490.0,
+        "mean": 12.223,
+        "std": 8.151,
+        "min": 2.0,
+        "25%": 8.0,
+        "50%": 10.0,
+        "75%": 13.0,
+        "95%": 30.0,
+        "99%": 44.11,
+        "max": 84.0
+      }
+    },
+    "val": {
+      "raw_words": {
+        "count": 1415.0,
+        "mean": 12.045,
+        "std": 7.528,
+        "min": 2.0,
+        "25%": 8.0,
+        "50%": 10.0,
+        "75%": 13.0,
+        "95%": 29.3,
+        "99%": 40.0,
+        "max": 54.0
+      },
+      "clean_words": {
+        "count": 1415.0,
+        "mean": 12.338,
+        "std": 7.769,
+        "min": 2.0,
+        "25%": 8.0,
+        "50%": 10.0,
+        "75%": 14.0,
+        "95%": 30.0,
+        "99%": 41.0,
+        "max": 56.0
+      }
+    },
+    "test": {
+      "raw_words": {
+        "count": 3080.0,
+        "mean": 10.953,
+        "std": 6.688,
+        "min": 2.0,
+        "25%": 7.0,
+        "50%": 9.0,
+        "75%": 12.0,
+        "95%": 24.0,
+        "99%": 38.21,
+        "max": 69.0
+      },
+      "clean_words": {
+        "count": 3080.0,
+        "mean": 11.202,
+        "std": 6.893,
+        "min": 2.0,
+        "25%": 7.0,
+        "50%": 9.0,
+        "75%": 12.0,
+        "95%": 25.0,
+        "99%": 40.0,
+        "max": 69.0
+      }
+    }
+  },
+  "validation_fraction_of_retained_train": 0.1429,
+  "limitations": [
+    "Exact and threshold-defined lexical overlap checks do not rule out every semantic paraphrase.",
+    "Regex masking does not detect all names, addresses or financial identifiers.",
+    "No customer, conversation or timestamp identifiers are available for group or temporal evaluation.",
+    "No classifier, vectorizer, prediction or model performance claim belongs to this run."
+  ]
 }

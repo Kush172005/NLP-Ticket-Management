@@ -1,5 +1,0 @@
-model,val_acc,val_macro_f1,train_sec
-TF-IDF + LinearSVC (calibrated),0.8889,0.8899,0.91
-TF-IDF + LogReg,0.8849,0.8863,2.56
-TF-IDF + Naive Bayes,0.8481,0.8325,0.12
-Majority baseline,0.0187,0.0005,0.1
