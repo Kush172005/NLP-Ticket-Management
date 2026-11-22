@@ -1,0 +1,38 @@
+{
+  "selected_model": "word_and_character_tfidf_linear_svm",
+  "selection_rule": "Highest validation macro F1 among trained text models",
+  "train_rows": 8490,
+  "validation_rows": 1415,
+  "test_rows": 3080,
+  "validation_results": [
+    {
+      "model": "majority_guess",
+      "split": "validation",
+      "accuracy": 0.0191,
+      "macro_f1": 0.0005,
+      "weighted_f1": 0.0007
+    },
+    {
+      "model": "word_tfidf_logistic_regression",
+      "split": "validation",
+      "accuracy": 0.8777,
+      "macro_f1": 0.8745,
+      "weighted_f1": 0.8783
+    },
+    {
+      "model": "word_and_character_tfidf_linear_svm",
+      "split": "validation",
+      "accuracy": 0.9081,
+      "macro_f1": 0.9056,
+      "weighted_f1": 0.9082
+    }
+  ],
+  "final_test_result": {
+    "accuracy": 0.914,
+    "macro_f1": 0.9142,
+    "weighted_f1": 0.9142
+  },
+  "test_report": "reports/test_classification_report.json",
+  "model_file": "models/banking77_intent_model.joblib",
+  "warning": "Benchmark results do not establish real-bank performance or time savings."
+}

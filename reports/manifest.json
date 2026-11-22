@@ -18,7 +18,7 @@
       "sha256": "7e7170e3cebf88a9f60c7b8421418323c09304da1af4d5e90f4da1dc1c8a2661"
     }
   },
-  "python": "3.14.0",
+  "python": "3.14.4",
   "packages": {
     "pandas": "3.0.1",
     "numpy": "2.4.2",
@@ -30,10 +30,12 @@
     "data_loader.py": "a361162e550901ac32ca3fb0fae1ea31c241e2bc12650999c485f8dc0bb90bfb",
     "demo.py": "28a984870ce8b11a5be165ba77dd96d024ef8d9d081064fd17a687e52a602538",
     "m2_preprocess.py": "c1f31cc641fe47a0169f59a48e0f9c36542c6e472572558084a251b4ac1c5664",
+    "predict_ticket.py": "58ce2c43ce77c578adb371e14b64b8352f5c8040025c0d9f719228273e4351d8",
     "preprocessing.py": "8c1fc99c5f1153b072532657e8fa987028ed0a349588ff1fc2965f33bf307bc0",
     "reporting.py": "8964cbfc598b6621ba0b4be4f21e2c172b7ef5a538b124bb2b0735a5876c59f7",
-    "verify.py": "13169cfd19c55577b1641c8a4301f5585f6446b3dded8fe3fc3460973308740f",
-    "requirements.txt": "71f2569633b04e6b092eac111f6065a4975f0cb50bddf7e97224a932f6ea3389"
+    "train_models.py": "179a0dd9534ab32ee269fbc8d2bb7483bc4039af555691b87a4e8404f81814fc",
+    "verify.py": "082b72acd306305f15a007b29c930b7d55d20199177d35be6ab2d306876d916e",
+    "requirements.txt": "4f145cc06bce5538d509fa882b3be3ccfff58e8d26986508e3ae47958a15b3a5"
   },
   "artifacts": {
     "data/processed/test.csv": "b7b6d53cb7c423e68215df368df83149a80b036c2cfdca644df7261bd7476f56",
@@ -47,7 +49,10 @@
     "reports/m2_eda.png": "19996175377f07ff1ba0863973b9db31987f7bdf29bd6e75632fa24a3afd0d8a",
     "reports/m2_report.html": "be5835684b81e09713cf6424c858dd8f1591f4a6a21e75144c379e11fce85dd9",
     "reports/m2_stats.json": "4e92001d4f7499fb73d2c0e525aaba36d1b8b2e972c7f57f7277360a028c8a40",
+    "reports/m3_experiment_log.csv": "2da94d0779dcd5c83b8c53e775d953f05432a720e45e09c13d85d06f9ee99081",
+    "reports/m3_summary.json": "ebcbfb6bb011774cc71d4fbba20cbec4b74d9536a44cd338e52afd4c0d444ec7",
     "reports/removed_rows.csv": "57eb6c802382f2c9fba73c43b0207190bcbc946d5a171dd6b4734dec848d100f",
+    "reports/test_classification_report.json": "5909d17b423091e7b4d981755496d6d0861250485485c61eeec0a113db6d6feb",
     "reports/ticket_lengths.png": "6e37a65e0a8ad106ed62f832201e3257d216905d6a0dd5b88c0b6b2b6296febe"
   }
 }

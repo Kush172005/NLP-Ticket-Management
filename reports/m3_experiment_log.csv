@@ -1,0 +1,5 @@
+model,split,accuracy,macro_f1,weighted_f1
+majority_guess,validation,0.0191,0.0005,0.0007
+word_tfidf_logistic_regression,validation,0.8777,0.8745,0.8783
+word_and_character_tfidf_linear_svm,validation,0.9081,0.9056,0.9082
+word_and_character_tfidf_linear_svm,test_final,0.914,0.9142,0.9142

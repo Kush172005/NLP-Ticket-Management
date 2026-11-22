@@ -51,9 +51,8 @@ def verify():
     _, pairs = duplicate_groups(all_saved.clean_text.tolist())
     require(all(all_saved.iloc[a].output_split == all_saved.iloc[b].output_split for a, b, _, _ in pairs),
             "Cross-split lexical duplicate found in saved outputs")
-    require(not (ROOT / "models").exists(), "Model folder found in this M1–M2 version")
-    for name in ("m3_train.py", "predict_ticket.py", "analyze.py", "modules.py", "eval_rules.py", "run_reproducible_training.py"):
-        require(not (ROOT / name).exists(), f"Out-of-scope script found: {name}")
+    # M3 may add models and prediction code. The same M2 source, cleaning and split
+    # accounting checks continue to protect the prepared data.
 
 
 if __name__ == "__main__":

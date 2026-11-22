@@ -1,9 +1,9 @@
 # Ticket Management System
 
-**Banking support ticket classification · Industry Track · M1 and M2**
+**Banking support ticket classification · Industry Track · M1, M2 and M3**
 
-This version defines the business case and prepares Banking77 data for later modelling.
-It contains no trained model, fitted vectorizer, prediction script or model-performance results.
+This project defines the business case, prepares Banking77 data and compares text-classification
+models. M3 validation and final test results are recorded in `reports/m3_summary.json`.
 
 ## Start here
 
@@ -12,6 +12,7 @@ It contains no trained model, fitted vectorizer, prediction script or model-perf
 2. Open `reports/m2_report.html` in a browser for the M1–M2 evidence and charts.
 3. Read `docs/DATA_CARD.md` for the dataset, preparation decisions, split policy and privacy limits.
 4. Open `presentation/M1_M2_Evaluation.pptx` for the milestone presentation.
+5. Read `docs/M3_MODEL_DEVELOPMENT.md` for the model comparison and results.
 
 ## Setup
 
@@ -47,6 +48,16 @@ To show the cleaning of an actual public dataset example:
 ```bash
 python demo.py --text "Is there a way to know when my card will arrive?"
 ```
+
+Train and compare the Milestone 3 models, or predict one query:
+
+```bash
+python train_models.py
+python predict_ticket.py "my card payment is pending"
+```
+
+Training compares a majority guess, a word TF-IDF logistic regression baseline and a word+character
+TF-IDF linear SVM. It chooses by validation macro F1, then evaluates the selected model once on test.
 
 The demo prints masked and cleaned text. It does not predict an intent or store entered text.
 
