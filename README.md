@@ -1,141 +1,105 @@
-# Banking Ticket Intent Classification
+# Ticket Management System
 
-An NLP-based banking support ticket classification project using the official Banking77 dataset.
+**Banking support ticket classification · Industry Track · M1 and M2**
 
-The model predicts the intent of a banking support message across 77 intent classes. The project includes data preprocessing, model comparison, evaluation, and single-ticket inference.
+This version defines the business case and prepares Banking77 data for later modelling.
+It contains no trained model, fitted vectorizer, prediction script or model-performance results.
 
-## Results
+## Start here
 
-| Metric | Result |
-|---|---:|
-| Dataset | Banking77 |
-| Intent classes | 77 |
-| Official training rows | 10,003 |
-| Official test rows | 3,080 |
-| Processed training rows | 8,464 |
-| Validation rows | 1,494 |
-| Test accuracy | 89.25% |
-| Test macro F1 | 89.26% |
-| Test top-3 accuracy | 96.72% |
-| Selected model | TF-IDF + calibrated LinearSVC |
+1. Read `docs/M1_PROBLEM_BRIEF.md` for the problem, users, business objective, success
+   measures and feasibility analysis.
+2. Open `reports/m2_report.html` in a browser for the M1–M2 evidence and charts.
+3. Read `docs/DATA_CARD.md` for the dataset, preparation decisions, split policy and privacy limits.
+4. Follow `docs/EVALUATION_GUIDE.md` for the demonstration and viva preparation.
 
-These results are from the current local training and evaluation run. Reproduce them using the commands below.
-
-## Dataset
-
-Banking77 is a banking customer-service intent classification dataset introduced by PolyAI.
-
-The local CSV files are expected at:
-
-- `data/raw/banking77_train.csv`
-- `data/raw/banking77_test.csv`
-
-Each file contains `text` and `label` columns.
-
-Dataset source: https://github.com/PolyAI-LDN/task-specific-datasets
-
-Check the dataset's licence and redistribution terms before publishing the CSV files.
-
-## How the pipeline works
-
-1. Load the official training and test CSV files.
-2. Validate the dataset structure and labels.
-3. Clean the training data and remove duplicate/conflicting training examples.
-4. Split the cleaned training data into training and validation sets.
-5. Fit TF-IDF using the training data.
-6. Compare baseline and candidate classifiers using validation results.
-7. Evaluate the selected model on the separate official test split.
-8. Save the model and evaluation reports.
-
-The official test split should remain separate from model selection and training.
-
-## Models compared
-
-- Majority baseline
-- TF-IDF + Multinomial Naive Bayes
-- TF-IDF + Logistic Regression
-- TF-IDF + calibrated LinearSVC
-
-The current run selected TF-IDF + calibrated LinearSVC based on validation performance.
+The original project is preserved in Downloads. This folder is the M1–M2 evaluation version.
+See `docs/PROJECT_AUDIT.md` for the changes and excluded M3 components.
 
 ## Setup
 
-Python 3.11 is recommended for the environment used in this project.
-
-Create and activate a virtual environment:
+Python 3.11 or newer is required. This version was checked using Python 3.14.
+From this folder, create an environment if needed:
 
 ```bash
-python3.11 -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install --upgrade pip
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
-Ensure the two raw Banking77 CSV files exist in `data/raw/` before preprocessing.
+The official raw files and generated reports are supplied, so the evaluation needs no network
+once dependencies are installed. If raw files are missing, restore them with:
 
-## Reproduce preprocessing and training
+```bash
+python data_loader.py --download
+```
 
-Run these commands from the project root:
+The downloader checks fixed SHA-256 hashes and does not overwrite a modified source file.
+
+## Reproduce M2
 
 ```bash
 python m2_preprocess.py
-python m3_train.py
+python verify.py
+python -m unittest discover -s tests -v
+python demo.py
 ```
 
-The preprocessing script generates processed splits and preprocessing reports. The training script compares models, evaluates the selected model, and saves the trained model and evaluation outputs.
-
-## Predict a ticket
-
-After training, run:
+To show the cleaning of an actual public dataset example:
 
 ```bash
-python predict_ticket.py
+python demo.py --text "Is there a way to know when my card will arrive?"
 ```
 
-Example input:
+The demo prints masked and cleaned text. It does not predict an intent or store entered text.
 
-```text
-My card is not working when I try to make a payment.
-```
+## Preparation pipeline
 
-The script prints the predicted intent, its confidence estimate, and the top three candidate intents.
+1. Verify the publisher's train/test CSVs, category list and license against pinned hashes.
+2. Audit rows, labels, missing values and source duplicates.
+3. Normalize text and mask supported contact/numeric patterns.
+4. Exclude empty, conflicting and repeated normalized training examples.
+5. Group exact text and lexical near-duplicates using a fixed word-trigram Jaccard rule.
+6. Exclude training groups overlapping the official test text.
+7. Split the retained training source into train/validation with grouped stratification, seed 42.
+8. Save cleaned splits, quality checks, statistics, charts and source/code/output hashes.
 
-## Generated artifacts
+All 3,080 official test examples keep their membership and labels. All exported splits
+contain 77 intents. The pipeline checks zero cross-split exact text and defined duplicate-group
+overlap. Semantic paraphrases and customer-level leakage cannot be ruled out from these fields.
 
-- `models/intent_model.joblib` — trained intent classifier
-- `models/tfidf_word.joblib` — saved TF-IDF vectorizer from preprocessing
-- `reports/m2_stats.json` — preprocessing statistics
-- `reports/m2_eda.png` — exploratory data analysis chart
-- `reports/m3_test_results.json` — test evaluation metrics
-- `reports/m3_model_comparison.csv` — model comparison results
-- `reports/m3_per_class_report.csv` — per-class evaluation
-- `reports/training_evidence.txt` — dataset checks, model metadata, metrics, and file fingerprints
+The split uses one of seven grouped stratified folds for validation, approximately one seventh
+of the retained training source. Grouping can change the exact fraction and label proportions.
 
-## Reproducibility and limitations
+## Files
 
-The reported metrics describe the current experiment and should be verified by rerunning the pipeline.
+| File / folder | Purpose |
+|---|---|
+| `config.py` | Paths, source revision, hashes and fixed preparation choices |
+| `data_loader.py` | Verify and load separate official train/test files |
+| `preprocessing.py` | Masking, normalization and duplicate grouping |
+| `m2_preprocess.py` | Data audit, exclusions, split construction and exports |
+| `reporting.py` | Static charts, HTML report and generated data card |
+| `verify.py` | Independently check saved artifacts against source files |
+| `demo.py` | Terminal walkthrough and text-cleaning demo |
+| `data/raw/` | Publisher's original files, unmodified |
+| `data/processed/` | Prepared train, validation and test CSVs |
+| `reports/` | Evidence from the actual preprocessing run |
+| `docs/` | M1 brief, data card, audit and evaluation guide |
+| `presentation/` | Local evaluation slides |
+| `tests/` | Regression checks for cleaning, grouping and source verification |
 
-SHA-256 fingerprints identify file contents, but do not independently prove a model's training history. For stronger verification, preserve the dataset source, training code, environment/package versions, split-generation procedure, and evaluation output.
+## Data source and limitations
 
-Confidence scores are estimates and are not guarantees of correctness. Similar intents can be confused, and low-confidence predictions may need human review.
+Banking77 contains 13,083 English banking queries across 77 intents. It supports intent
+classification, not a validated complete ticket lifecycle system. It has no sentiment,
+priority, routing, summary or reply labels. No real-agent time saving has been measured.
 
-## Project structure
+Publisher: [PolyAI](https://github.com/PolyAI-LDN/task-specific-datasets).  
+Paper: Casanueva et al. (2020), [Efficient Intent Detection with Dual Sentence Encoders](https://aclanthology.org/2020.nlp4convai-1.5/).  
+Dataset license: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), with the publisher's
+license included in `data/raw/LICENSE.txt`. The source CSVs are unchanged. Processed files
+change text and exclude training examples as documented in the data card.
 
-```text
-ticket_triage/
-├── data/
-│   ├── raw/
-│   └── processed/
-├── models/
-├── reports/
-├── config.py
-├── m2_preprocess.py
-├── m3_train.py
-├── predict_ticket.py
-├── requirements.txt
-└── README.md
-```
-
-## License
-
-Add your project's licence after confirming the terms of the dataset and any third-party dependencies.
+Regex masking is incomplete. Names, addresses and unusual identifiers may remain. Keep raw
+data separate, review redaction before sharing, and use public examples in the demonstration.
