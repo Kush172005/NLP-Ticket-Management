@@ -53,11 +53,15 @@ Train and compare the Milestone 3 models, or predict one query:
 
 ```bash
 python train_models.py
+python m4_evaluation.py
 python predict_ticket.py "my card payment is pending"
 ```
 
 Training compares a majority guess, a word TF-IDF logistic regression baseline and a word+character
 TF-IDF linear SVM. It chooses by validation macro F1, then evaluates the selected model once on test.
+Milestone 4 checks a small SVM setting search, analyzes test errors, and runs controlled robustness
+checks on validation messages. See `docs/M4_EVALUATION.md` for the results and limits. Inference
+shows three suggested categories; its raw ranking scores are not probabilities.
 
 The demo prints masked and cleaned text. It does not predict an intent or store entered text.
 

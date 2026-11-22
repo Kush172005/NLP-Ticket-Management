@@ -1,0 +1,66 @@
+{
+  "selection_metric": "validation macro F1",
+  "selection_rule": "Use the best validation macro F1; retain M3 C=1.0 if the gain is under 0.001.",
+  "selection_decision": "Kept C=1.0 because the best candidate gain was below 0.001 macro F1.",
+  "m3_reference_validation": {
+    "iteration": "m3_reference_c_1_0",
+    "C": 1.0,
+    "split": "validation",
+    "accuracy": 0.9081,
+    "macro_f1": 0.9056,
+    "weighted_f1": 0.9082
+  },
+  "selected_iteration": "m3_reference_c_1_0",
+  "selected_C": 1.0,
+  "selected_validation_result": {
+    "iteration": "m3_reference_c_1_0",
+    "C": 1.0,
+    "split": "validation",
+    "accuracy": 0.9081,
+    "macro_f1": 0.9056,
+    "weighted_f1": 0.9082
+  },
+  "final_test_result": {
+    "accuracy": 0.914,
+    "macro_f1": 0.9142,
+    "weighted_f1": 0.9142
+  },
+  "test_error_analysis": {
+    "test_rows": 3080,
+    "wrong_predictions": 265,
+    "error_rate": 0.086,
+    "error_tag_counts_note": "Tags may overlap; other is used when neither defined pattern applies.",
+    "error_tag_counts": {
+      "short_query_5_words_or_fewer": 23,
+      "contains_masked_value": 3,
+      "other_misclassification": 239
+    },
+    "files": [
+      "reports/m4_test_errors.csv",
+      "reports/m4_common_confusions.csv",
+      "reports/m4_test_per_intent.json"
+    ]
+  },
+  "robustness_validation_results": [
+    {
+      "check": "case_and_punctuation",
+      "accuracy_after_change": 0.9081,
+      "same_prediction_as_original_fraction": 1.0,
+      "purpose": "Expected invariance to casing and punctuation after normalization."
+    },
+    {
+      "check": "one_character_swap",
+      "accuracy_after_change": 0.8417,
+      "same_prediction_as_original_fraction": 0.8919,
+      "purpose": "Stress check for a small typo; exact same label is not guaranteed."
+    },
+    {
+      "check": "first_half_only",
+      "accuracy_after_change": 0.4261,
+      "same_prediction_as_original_fraction": 0.4452,
+      "purpose": "Stress check for incomplete input; loss of meaning can change the correct intent."
+    }
+  ],
+  "inference_model": "models/banking77_intent_model.joblib",
+  "note": "Test scores/errors are descriptive only. They were not used to select settings. Robustness model was trained on train only; validation stayed unseen."
+}

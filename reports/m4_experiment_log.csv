@@ -1,0 +1,5 @@
+iteration,C,split,accuracy,macro_f1,weighted_f1
+softer_margin_c_0_5,0.5,validation,0.9067,0.9054,0.907
+m3_reference_c_1_0,1.0,validation,0.9081,0.9056,0.9082
+stronger_margin_c_2_0,2.0,validation,0.9074,0.9059,0.9075
+m3_reference_c_1_0,1.0,test_final,0.914,0.9142,0.9142

@@ -1,0 +1,266 @@
+row_id,true_label,predicted_label,error_tags,clean_text
+test_00000,card_arrival,get_physical_card,other_misclassification,how do i locate my card
+test_00005,card_arrival,card_delivery_estimate,other_misclassification,when will i get my card
+test_00011,card_arrival,card_delivery_estimate,other_misclassification,how long does a card delivery take
+test_00032,card_arrival,card_delivery_estimate,other_misclassification,how do i know when my card will arrive
+test_00036,card_arrival,lost_or_stolen_card,other_misclassification,i am starting to think my card is lost because it still has not arrived can you help
+test_00079,card_linking,getting_spare_card,other_misclassification,can i link another card to my account
+test_00093,exchange_rate,exchange_charge,other_misclassification,is it a good time to exchange
+test_00106,exchange_rate,wrong_exchange_rate_for_cash_withdrawal,short_query_5_words_or_fewer,the exchange rate would be
+test_00123,card_payment_wrong_exchange_rate,wrong_exchange_rate_for_cash_withdrawal,other_misclassification,the exchange rate was wrong when i bought something outside the country
+test_00138,card_payment_wrong_exchange_rate,card_payment_fee_charged,other_misclassification,why am i being charged more
+test_00145,card_payment_wrong_exchange_rate,wrong_exchange_rate_for_cash_withdrawal,other_misclassification,the exchange rate seems off on this transaction
+test_00156,card_payment_wrong_exchange_rate,wrong_exchange_rate_for_cash_withdrawal,other_misclassification,how can i check the exchange rate applied to my transaction
+test_00164,extra_charge_on_statement,card_payment_not_recognised,other_misclassification,there is a fee i do not recognize on my statement
+test_00173,extra_charge_on_statement,verify_source_of_funds,other_misclassification,where did this fee come from
+test_00196,extra_charge_on_statement,reverted_card_payment?,contains_masked_value,it s been two weeks why has the transaction for <number> not been reversed
+test_00222,pending_cash_withdrawal,cash_withdrawal_not_recognised,other_misclassification,i made a withdrawal from my account but it has not posted
+test_00227,pending_cash_withdrawal,pending_transfer,other_misclassification,why am i unable to take money from my card but the statement says the transaction is still pending
+test_00236,pending_cash_withdrawal,declined_card_payment,other_misclassification,my account was charged for a withdraw i tried to make that was decline
+test_00237,pending_cash_withdrawal,card_delivery_estimate,other_misclassification,how long does it take to post atm with drawl
+test_00239,pending_cash_withdrawal,pending_card_payment,other_misclassification,what s a pending transaction my card was declined at an atm but my account says it s still pending can i cancel the payment
+test_00245,fiat_currency_support,supported_cards_and_currencies,short_query_5_words_or_fewer,do you support any currency
+test_00246,fiat_currency_support,pending_card_payment,other_misclassification,there is an incoming payment into my account but it is deactivated will they still be processed
+test_00264,fiat_currency_support,exchange_via_app,other_misclassification,am i able to exchange currencies
+test_00268,fiat_currency_support,exchange_via_app,other_misclassification,i want to make a currency exchange to eu
+test_00271,fiat_currency_support,exchange_via_app,short_query_5_words_or_fewer,can i exchange currencies
+test_00276,fiat_currency_support,exchange_rate,other_misclassification,how do i accept exchanges to eu
+test_00279,fiat_currency_support,country_support,other_misclassification,what countries can i travel to and have access to their currencies
+test_00281,card_delivery_estimate,declined_card_payment,other_misclassification,my card was not in the mail again can you advise
+test_00301,card_delivery_estimate,request_refund,other_misclassification,ordered awhile back what is the eta in the us
+test_00308,card_delivery_estimate,card_arrival,other_misclassification,can i get my card expedited
+test_00312,card_delivery_estimate,card_arrival,other_misclassification,i am waiting for my card to arrive
+test_00367,card_not_working,unable_to_verify_identity,other_misclassification,can you please identify the problem with my bank card
+test_00368,card_not_working,pin_blocked,other_misclassification,how do i unblock my card using the app
+test_00371,card_not_working,top_up_failed,other_misclassification,can someone assist me by explaining why my card is not working
+test_00416,exchange_via_app,wrong_exchange_rate_for_cash_withdrawal,other_misclassification,how would i use my money in a different country
+test_00417,exchange_via_app,exchange_charge,other_misclassification,if i receive foreign currencies am i able to exchange them on the app
+test_00434,exchange_via_app,fiat_currency_support,other_misclassification,can i change my currency from usd to eur
+test_00453,lost_or_stolen_card,transaction_charged_twice,other_misclassification,is a copy of the police report necessary for completing the report process
+test_00467,lost_or_stolen_card,cash_withdrawal_not_recognised,other_misclassification,my card was taken from me
+test_00476,lost_or_stolen_card,topping_up_by_card,other_misclassification,i cannot find my credit card
+test_00492,age_limit,wrong_amount_of_cash_received,contains_masked_value,i am only <number> can i make an account
+test_00521,pin_blocked,get_physical_card,other_misclassification,where can i view my pin
+test_00522,pin_blocked,get_physical_card,short_query_5_words_or_fewer,will you reinstate my pin
+test_00527,pin_blocked,card_not_working,other_misclassification,how do i reset my pin i cannot seem to use my card
+test_00534,pin_blocked,card_not_working,other_misclassification,what do i do if the bank machine will not accept my pin attempts anymore
+test_00537,pin_blocked,card_swallowed,other_misclassification,i attempted to use my card while i was intoxicated and i failed to input my pin and the machine kept my card how soon can i have it back
+test_00551,pin_blocked,card_linking,short_query_5_words_or_fewer,can i reactivate my pin
+test_00555,pin_blocked,card_not_working,other_misclassification,my card s frozen what can i do
+test_00562,contactless_not_working,verify_my_identity,other_misclassification,what is required documents for new card process
+test_00586,contactless_not_working,top_up_by_card_charge,other_misclassification,what is the charges for new card
+test_00614,top_up_by_bank_transfer_charge,transfer_fee_charged,other_misclassification,will a transfer incur a fee
+test_00618,top_up_by_bank_transfer_charge,top_up_by_card_charge,other_misclassification,what are the fees for top ups
+test_00632,top_up_by_bank_transfer_charge,pending_transfer,other_misclassification,can you tell me what the transfer policy is
+test_00636,top_up_by_bank_transfer_charge,transfer_into_account,other_misclassification,what us the fee to transfer money from my bank
+test_00647,pending_top_up,top_up_failed,other_misclassification,i have already topped up but i cannot see the funds being available what happened
+test_00649,pending_top_up,topping_up_by_card,other_misclassification,i do not see a top up processed
+test_00666,pending_top_up,top_up_failed,other_misclassification,omg i am trying to load my card and it wont top up i desperately need the money either on my card or in my bank where is it
+test_00673,pending_top_up,topping_up_by_card,other_misclassification,where is the money i topped off with
+test_00676,pending_top_up,top_up_failed,other_misclassification,topping up my card is not working because i believe the top up is pending
+test_00717,cancel_transfer,transfer_not_received_by_recipient,other_misclassification,i do not want the transaction to go through now
+test_00718,cancel_transfer,card_payment_wrong_exchange_rate,other_misclassification,can i change the amount i made on a payment that i made to the payment is correct
+test_00725,top_up_limits,beneficiary_not_allowed,other_misclassification,what are the restrictions to top offs
+test_00757,top_up_limits,pending_top_up,other_misclassification,do you have any restrictions to my top up
+test_00773,wrong_amount_of_cash_received,cash_withdrawal_not_recognised,other_misclassification,where is the money i pushed it s on my mobile app as being withdrawn
+test_00775,wrong_amount_of_cash_received,declined_cash_withdrawal,other_misclassification,my cash withdrawal was partly declined
+test_00798,wrong_amount_of_cash_received,cash_withdrawal_not_recognised,other_misclassification,did not receive correct cash upon withdrawal
+test_00799,wrong_amount_of_cash_received,declined_cash_withdrawal,other_misclassification,will declined funds i tried to withdraw be returned to me
+test_00807,card_payment_fee_charged,direct_debit_payment_not_recognised,short_query_5_words_or_fewer,there is an unauthorized fee
+test_00812,card_payment_fee_charged,direct_debit_payment_not_recognised,other_misclassification,im not sure what this charge is for
+test_00824,card_payment_fee_charged,transfer_fee_charged,other_misclassification,so what items actually come with extra fees
+test_00835,card_payment_fee_charged,extra_charge_on_statement,other_misclassification,there is a fee on my account why
+test_00849,transfer_not_received_by_recipient,balance_not_updated_after_bank_transfer,other_misclassification,how long do money transfers take
+test_00851,transfer_not_received_by_recipient,get_physical_card,other_misclassification,where is the transfer i started
+test_00852,transfer_not_received_by_recipient,failed_transfer,short_query_5_words_or_fewer,transaction failed
+test_00857,transfer_not_received_by_recipient,failed_transfer,other_misclassification,i need to find out why my transfer did not get there
+test_00863,transfer_not_received_by_recipient,transfer_fee_charged,other_misclassification,i transferred some money but the receiver cannot pick it up for some reason
+test_00873,transfer_not_received_by_recipient,verify_source_of_funds,short_query_5_words_or_fewer,when will my funds transfer
+test_00912,supported_cards_and_currencies,fiat_currency_support,other_misclassification,do you accept other currencies besides us dollars
+test_00924,getting_virtual_card,order_physical_card,other_misclassification,if i do not want a physical card can i get a virtual version
+test_00945,getting_virtual_card,edit_personal_details,other_misclassification,can i get a copy of the card by email
+test_00962,card_acceptance,country_support,other_misclassification,can i use my card for payment all over the world
+test_00979,card_acceptance,automatic_top_up,other_misclassification,i am traveling to germany will i be able to use my card there
+test_00980,card_acceptance,pending_card_payment,other_misclassification,what stores will take my credit card as payment
+test_00989,card_acceptance,card_not_working,short_query_5_words_or_fewer,areas card is accpeted
+test_00997,card_acceptance,card_not_working,other_misclassification,where am i able to use the card
+test_01003,top_up_reverted,pending_top_up,other_misclassification,my top up showed as complete but it s no longer there what s going on here
+test_01004,top_up_reverted,request_refund,other_misclassification,hi i do not know what s going on i have just paid for my top up twice by accident can you help me get a refund please
+test_01006,top_up_reverted,top_up_failed,other_misclassification,the app would not accept my top up
+test_01008,top_up_reverted,top_up_failed,other_misclassification,i believe my money did not go through with my top up was there a problem on your end
+test_01010,top_up_reverted,balance_not_updated_after_cheque_or_cash_deposit,other_misclassification,i put money into my account for the minimum balance but the application did not accept
+test_01025,top_up_reverted,reverted_card_payment?,other_misclassification,i tryed to make a top up with cryptocurrency but the payment was referted
+test_01038,top_up_reverted,top_up_failed,other_misclassification,on my last transaction it seem that my top up was not successful
+test_01055,balance_not_updated_after_cheque_or_cash_deposit,balance_not_updated_after_bank_transfer,other_misclassification,the balance on my account was not updated after i made a depost
+test_01103,card_payment_not_recognised,compromised_card,other_misclassification,what should i do to get transactions off of my account if i did not make them my card must have been compromised and i need to freeze it asap
+test_01107,card_payment_not_recognised,direct_debit_payment_not_recognised,other_misclassification,i have an unauthorized transaction on my statement
+test_01112,card_payment_not_recognised,compromised_card,other_misclassification,somebody used my card to make a purchase
+test_01114,card_payment_not_recognised,card_payment_wrong_exchange_rate,other_misclassification,some of my card payments look different than where i purchased products from why is that
+test_01116,card_payment_not_recognised,card_payment_wrong_exchange_rate,other_misclassification,i think there has been a purchase made that was not by me
+test_01161,why_verify_identity,unable_to_verify_identity,other_misclassification,i d rather not verify my identity
+test_01186,why_verify_identity,unable_to_verify_identity,other_misclassification,since my id has not been verified when can i use my account
+test_01187,why_verify_identity,unable_to_verify_identity,other_misclassification,i will not verify my identity
+test_01192,why_verify_identity,verify_my_identity,other_misclassification,what other methods are there to verify my identity
+test_01193,why_verify_identity,verify_my_identity,other_misclassification,do i need to verify my identity
+test_01201,unable_to_verify_identity,why_verify_identity,other_misclassification,i do not have what is required to prove my identity
+test_01204,unable_to_verify_identity,failed_transfer,other_misclassification,what do i do if my verification failed
+test_01205,unable_to_verify_identity,why_verify_identity,other_misclassification,it is impossible to verify my identity
+test_01225,unable_to_verify_identity,verify_my_identity,other_misclassification,what do i need to verify my id
+test_01227,unable_to_verify_identity,verify_my_identity,other_misclassification,how do i show this stupid system that this is really my identity
+test_01251,get_physical_card,activate_my_card,other_misclassification,i just got my new card but am not sure how to check its pin
+test_01296,visa_or_mastercard,card_payment_not_recognised,other_misclassification,am i allowed to use any card to make a payment
+test_01297,visa_or_mastercard,order_physical_card,short_query_5_words_or_fewer,what are the available cards
+test_01315,visa_or_mastercard,supported_cards_and_currencies,other_misclassification,what major card payments are accepted
+test_01324,topping_up_by_card,transfer_into_account,other_misclassification,how do i top up my card using your app i am new to this
+test_01331,topping_up_by_card,balance_not_updated_after_bank_transfer,other_misclassification,where s the money that got charged to my card it s not showing up in my account balance
+test_01332,topping_up_by_card,top_up_limits,short_query_5_words_or_fewer,how can i top up
+test_01346,topping_up_by_card,transfer_into_account,other_misclassification,how can someone add money to my account
+test_01347,topping_up_by_card,top_up_failed,short_query_5_words_or_fewer,cannot access my top up
+test_01354,topping_up_by_card,transfer_into_account,other_misclassification,who can top up my accounts
+test_01358,topping_up_by_card,pending_top_up,other_misclassification,why cannot i see the top up amount i just added to my account
+test_01360,disposable_card_limits,get_disposable_virtual_card,other_misclassification,how can i get multiple disposble cards
+test_01367,disposable_card_limits,getting_virtual_card,other_misclassification,do these virtual cards have any caps on using them
+test_01381,disposable_card_limits,getting_spare_card,other_misclassification,how can i create many temporary cards daily
+test_01386,disposable_card_limits,getting_virtual_card,other_misclassification,can you explain the virtual cards limit
+test_01391,disposable_card_limits,getting_virtual_card,other_misclassification,how many virtual cards do i get
+test_01394,disposable_card_limits,get_disposable_virtual_card,other_misclassification,what can i use a virtual disposable card for
+test_01404,compromised_card,lost_or_stolen_card,other_misclassification,can i freeze my card right now
+test_01413,compromised_card,lost_or_stolen_card,other_misclassification,i think my identity has been stolen can you check on unauthorized charges
+test_01421,compromised_card,card_payment_not_recognised,other_misclassification,how do i freeze my card using the app
+test_01425,compromised_card,card_payment_not_recognised,other_misclassification,how do i freeze my account
+test_01455,atm_support,declined_cash_withdrawal,other_misclassification,how many miles away is the atm
+test_01460,atm_support,card_acceptance,other_misclassification,can i get cash with this card anywhere
+test_01478,atm_support,declined_cash_withdrawal,other_misclassification,is there places where i cannot withdraw money
+test_01485,direct_debit_payment_not_recognised,Refund_not_showing_up,other_misclassification,im so mad right now theres several charges that i think my x boyfriend made on my card the companys on the website would not refund me my money they told me to contact my bank do something please
+test_01486,direct_debit_payment_not_recognised,lost_or_stolen_card,short_query_5_words_or_fewer,someone stole my money
+test_01516,direct_debit_payment_not_recognised,cash_withdrawal_not_recognised,other_misclassification,someone has taken my money and i do not know who
+test_01517,direct_debit_payment_not_recognised,extra_charge_on_statement,other_misclassification,i was charged on my account that should not be there
+test_01562,declined_cash_withdrawal,top_up_failed,contains_masked_value,this is very frustrating i cannot get my card to work on any atm i try and i have tried <number> of them so far what s going on can you please fix this issue immediately
+test_01578,declined_cash_withdrawal,declined_card_payment,other_misclassification,what are some reasons that would cause atm machines to decline my card it has happened to me multiple times
+test_01580,declined_cash_withdrawal,wrong_amount_of_cash_received,short_query_5_words_or_fewer,my atm transaction was unsuccessful
+test_01603,pending_card_payment,card_payment_not_recognised,other_misclassification,how do i finalize a card payment
+test_01622,pending_card_payment,card_not_working,other_misclassification,how long do card transactions take to clear
+test_01626,pending_card_payment,transaction_charged_twice,other_misclassification,i was double charged and the second charge is showing as pending how long will it be before i get my money back once the second charge has been refunded
+test_01672,lost_or_stolen_phone,lost_or_stolen_card,short_query_5_words_or_fewer,someone stole my cards
+test_01689,request_refund,card_payment_wrong_exchange_rate,other_misclassification,i was not charged the correct amount for an item i purchased how can i fix this
+test_01726,declined_transfer,transaction_charged_twice,other_misclassification,how can i fix my card it got declined twice
+test_01736,declined_transfer,failed_transfer,other_misclassification,why was i unable to do a transfer
+test_01737,declined_transfer,transfer_fee_charged,other_misclassification,trouble transferring transaction contact for help
+test_01751,declined_transfer,declined_cash_withdrawal,other_misclassification,double check your funds may be declined
+test_01752,declined_transfer,failed_transfer,other_misclassification,i cannot transfer money from my account
+test_01756,declined_transfer,card_not_working,other_misclassification,my card is being declined online could you tell me what might be broken or wrong with the account
+test_01758,declined_transfer,transaction_charged_twice,other_misclassification,i was attempting to purchase a golf club off ebay yesterday but my credit card was declined i tried multiple times and again this morning can you check into my card please
+test_01762,Refund_not_showing_up,request_refund,other_misclassification,i requested a refund and never received it what can i do
+test_01775,Refund_not_showing_up,reverted_card_payment?,other_misclassification,i bought something and returned it and the money from the return is not in my account
+test_01794,Refund_not_showing_up,request_refund,other_misclassification,why does not a return show up im my account from a purchase i made
+test_01815,declined_card_payment,pending_card_payment,other_misclassification,i am really stuck i do not know why but my card payment has not gone through
+test_01822,declined_card_payment,direct_debit_payment_not_recognised,other_misclassification,why is my debit card being declined when i have money
+test_01842,pending_transfer,transfer_not_received_by_recipient,other_misclassification,why is my transfer not done yet
+test_01855,pending_transfer,transfer_not_received_by_recipient,other_misclassification,i transferred money yesterday but it still is not available
+test_01858,pending_transfer,failed_transfer,other_misclassification,why has not my transfer gone through yet
+test_01859,pending_transfer,failed_transfer,other_misclassification,when will the transfer go through
+test_01862,pending_transfer,failed_transfer,other_misclassification,when will my transfer go through
+test_01864,pending_transfer,transfer_not_received_by_recipient,other_misclassification,when will the transfer be completed
+test_01866,pending_transfer,pending_card_payment,other_misclassification,i would like to know why my payment is still pending can you help
+test_01867,pending_transfer,balance_not_updated_after_bank_transfer,other_misclassification,someone transferred money to me and it does not show
+test_01874,pending_transfer,balance_not_updated_after_bank_transfer,other_misclassification,why is a money transfer not showing
+test_01875,pending_transfer,pending_card_payment,other_misclassification,the transfer is coming up as pending the payment is due today will i be charged a fee
+test_01877,pending_transfer,failed_transfer,other_misclassification,my transfer has not gone through yet
+test_01921,card_swallowed,lost_or_stolen_card,other_misclassification,how do i retrieve my card from the machine
+test_01922,card_swallowed,lost_or_stolen_card,other_misclassification,i was retrieving money and my card would not remove
+test_01939,card_swallowed,card_arrival,short_query_5_words_or_fewer,atm still has my card
+test_01953,card_swallowed,card_not_working,other_misclassification,i was taking out funds and was unable to regain my card
+test_01958,card_swallowed,pending_cash_withdrawal,other_misclassification,wtf i tried to withdraw some money at a metro bank on high st kensington and without any notice it disappeared in the machine the bank was already closed so i could not do anything how do i get it back
+test_02045,transfer_timing,pending_transfer,other_misclassification,how long until my transfer goes through
+test_02047,transfer_timing,failed_transfer,other_misclassification,what is the fastest that i can make a transfer
+test_02048,transfer_timing,balance_not_updated_after_bank_transfer,other_misclassification,how long dies it take for transfers to reflect on my balance
+test_02052,transfer_timing,balance_not_updated_after_bank_transfer,other_misclassification,when should i expect to see my transfer hit my account
+test_02057,transfer_timing,pending_top_up,other_misclassification,how long does it take for funds to come through the us to my account
+test_02069,transfer_timing,pending_transfer,other_misclassification,how long does a funds transfer take from one back to another
+test_02073,transfer_timing,verify_source_of_funds,other_misclassification,how long is it going to take for my funds to show in my account
+test_02092,reverted_card_payment?,top_up_failed,other_misclassification,my card is being declined for a purchase i bought items before and the card worked do you know what the problem is
+test_02102,reverted_card_payment?,card_not_working,other_misclassification,i am attempting to make a purchase online but my card is not working i know there are funds available is this an issue on the banks end
+test_02146,change_pin,get_physical_card,other_misclassification,may i receive a different card pin
+test_02153,change_pin,get_physical_card,other_misclassification,how do i update the pin on my account
+test_02164,beneficiary_not_allowed,pin_blocked,short_query_5_words_or_fewer,i had a transfer blocked
+test_02190,beneficiary_not_allowed,failed_transfer,other_misclassification,the account transfer i was trying to do failed
+test_02196,beneficiary_not_allowed,balance_not_updated_after_bank_transfer,other_misclassification,why isnt my account allowing transfers
+test_02204,transfer_fee_charged,top_up_by_bank_transfer_charge,other_misclassification,i had to pay in order to do a transfer
+test_02209,transfer_fee_charged,top_up_limits,other_misclassification,what is the maximum i can transfer before i incur fees
+test_02215,transfer_fee_charged,reverted_card_payment?,other_misclassification,why did i get charged for something i bought online even though it was international i thought it would be covered
+test_02233,transfer_fee_charged,extra_charge_on_statement,short_query_5_words_or_fewer,what extra charges are there
+test_02236,transfer_fee_charged,direct_debit_payment_not_recognised,other_misclassification,i was charged for something i did not expect
+test_02252,receiving_money,exchange_via_app,short_query_5_words_or_fewer,is gbp a supported currency
+test_02290,failed_transfer,pending_transfer,other_misclassification,i could not get my transfer to happen correctly and was wondering why
+test_02295,failed_transfer,transfer_fee_charged,other_misclassification,why has not my transfer been made
+test_02300,failed_transfer,card_delivery_estimate,other_misclassification,what are your policies for card transfers
+test_02305,failed_transfer,transfer_into_account,other_misclassification,what is stopping my money from transferring
+test_02313,failed_transfer,declined_transfer,short_query_5_words_or_fewer,help me with my transfer
+test_02324,transfer_into_account,topping_up_by_card,other_misclassification,i do not understand the money transfer process
+test_02338,transfer_into_account,topping_up_by_card,other_misclassification,how do i top up my card
+test_02341,transfer_into_account,supported_cards_and_currencies,other_misclassification,what methods can i use to add money to my account
+test_02348,transfer_into_account,balance_not_updated_after_bank_transfer,other_misclassification,how do i do an international transfer
+test_02351,transfer_into_account,failed_transfer,short_query_5_words_or_fewer,how does a transfer work
+test_02411,getting_spare_card,transaction_charged_twice,other_misclassification,do you offer multiple cards for the same account
+test_02426,getting_spare_card,getting_virtual_card,other_misclassification,can i purchase extra non virtual cards
+test_02438,getting_spare_card,age_limit,other_misclassification,my child needs a card how can i add them to the account i currently have
+test_02447,top_up_by_cash_or_cheque,balance_not_updated_after_cheque_or_cash_deposit,other_misclassification,i am looking for the cash deposit top up option but cannot find it can you help me
+test_02453,top_up_by_cash_or_cheque,supported_cards_and_currencies,other_misclassification,what type of deposits do you accept into my account
+test_02466,top_up_by_cash_or_cheque,supported_cards_and_currencies,other_misclassification,what methods can i use to top up my account
+test_02469,top_up_by_cash_or_cheque,card_acceptance,other_misclassification,what can i pay with does cash work
+test_02477,top_up_by_cash_or_cheque,topping_up_by_card,other_misclassification,how can i top up my card
+test_02499,order_physical_card,country_support,other_misclassification,is a non electronic card available as well
+test_02500,order_physical_card,top_up_by_card_charge,other_misclassification,how much does it cost in fees to use your card
+test_02503,order_physical_card,getting_virtual_card,other_misclassification,can i have a non virtual card
+test_02513,order_physical_card,lost_or_stolen_card,other_misclassification,where will i find my card
+test_02523,virtual_card_not_working,card_not_working,other_misclassification,my non physical card will not work
+test_02524,virtual_card_not_working,get_disposable_virtual_card,other_misclassification,why did the disposable virtual card which i used to pay a gym subscription get denied
+test_02525,virtual_card_not_working,getting_virtual_card,other_misclassification,why is my virtual card is being declined
+test_02526,virtual_card_not_working,disposable_card_limits,other_misclassification,are there restrictions for my disposable card since it does not seem to be working
+test_02532,virtual_card_not_working,automatic_top_up,other_misclassification,why was my virtual card declined when attempting to setup automatic billing
+test_02544,virtual_card_not_working,card_not_working,other_misclassification,my card is just not working at this time
+test_02548,virtual_card_not_working,get_disposable_virtual_card,other_misclassification,my transaction was just declined when i was using my disposable virtual card what can i do
+test_02563,wrong_exchange_rate_for_cash_withdrawal,card_payment_wrong_exchange_rate,other_misclassification,can you look to make sure the exchange rate is correct
+test_02571,wrong_exchange_rate_for_cash_withdrawal,exchange_charge,other_misclassification,is there a fee for exchanging cash
+test_02575,wrong_exchange_rate_for_cash_withdrawal,wrong_amount_of_cash_received,other_misclassification,will there be additional costs of i make a withdrawal from a local atm of british pounds i need some cash to feel comfortable on the journey home
+test_02596,wrong_exchange_rate_for_cash_withdrawal,exchange_rate,other_misclassification,how do you determine your exchange rates because one of yours was off when i got cash
+test_02599,wrong_exchange_rate_for_cash_withdrawal,atm_support,other_misclassification,is there a local atm that will provide british pounds i have no money for my homeward journey and do not feel comfortable waiting until i arrive in britain will a withdrawal involve extra charges
+test_02606,get_disposable_virtual_card,getting_virtual_card,other_misclassification,i would like a temporary virtual card
+test_02622,get_disposable_virtual_card,getting_virtual_card,other_misclassification,how does a virtual card work
+test_02636,get_disposable_virtual_card,card_delivery_estimate,other_misclassification,can i get a throw away card
+test_02637,get_disposable_virtual_card,disposable_card_limits,other_misclassification,how many transactions can i make with a disposable card
+test_02655,top_up_failed,top_up_reverted,other_misclassification,why did my top up not work
+test_02656,top_up_failed,top_up_reverted,other_misclassification,why was my top up unsuccessful
+test_02657,top_up_failed,declined_card_payment,other_misclassification,my funding to my card did not go through
+test_02659,top_up_failed,top_up_reverted,other_misclassification,i topped up but the app did not accept it
+test_02663,top_up_failed,pending_top_up,other_misclassification,can you tell me if my pop up went through
+test_02664,top_up_failed,top_up_by_cash_or_cheque,other_misclassification,can you check why i was not able to top up
+test_02675,top_up_failed,declined_card_payment,other_misclassification,i really need money from my card today but my card is getting declined please help
+test_02676,top_up_failed,top_up_reverted,other_misclassification,how do i know if my top up was unsuccessful
+test_02687,balance_not_updated_after_bank_transfer,transfer_timing,other_misclassification,when will my transfer be available in my account
+test_02690,balance_not_updated_after_bank_transfer,transfer_not_received_by_recipient,other_misclassification,i transferred some money but i think it has gotten lost somewhere
+test_02694,balance_not_updated_after_bank_transfer,transfer_not_received_by_recipient,other_misclassification,i made an out of country transfer and it has not went through yet
+test_02700,balance_not_updated_after_bank_transfer,transfer_timing,other_misclassification,i made a transfer and it doesnt show up in my account
+test_02701,balance_not_updated_after_bank_transfer,transfer_not_received_by_recipient,other_misclassification,i transferred some money but it is yet to arrive
+test_02703,balance_not_updated_after_bank_transfer,failed_transfer,other_misclassification,why do not i have my transfer
+test_02708,balance_not_updated_after_bank_transfer,pending_transfer,other_misclassification,how long until my transfer will be available to me
+test_02711,balance_not_updated_after_bank_transfer,pending_transfer,short_query_5_words_or_fewer,my transfer is pending
+test_02715,balance_not_updated_after_bank_transfer,transfer_not_received_by_recipient,other_misclassification,where is my money i transfered it and it is not in my account
+test_02746,cash_withdrawal_not_recognised,card_payment_not_recognised,other_misclassification,how do i cancel my card there are charges on my account that i did not make
+test_02761,exchange_charge,exchange_rate,short_query_5_words_or_fewer,whats your exchange rate
+test_02763,exchange_charge,exchange_rate,other_misclassification,where do i find the exchange rate
+test_02784,exchange_charge,exchange_via_app,other_misclassification,does it cost to exchange currencies with this card
+test_02787,exchange_charge,exchange_rate,other_misclassification,when i travel what will it cost to switch for my currency
+test_02798,exchange_charge,wrong_exchange_rate_for_cash_withdrawal,other_misclassification,can i exchange money from abroad without additional costs
+test_02802,top_up_by_card_charge,supported_cards_and_currencies,other_misclassification,i was charged when i used a us issued card why and what cards are free to use to add money
+test_02852,activate_my_card,lost_or_stolen_card,other_misclassification,what can i do after the card missing
+test_02890,cash_withdrawal_charge,card_payment_fee_charged,other_misclassification,why did i get a fee
+test_02917,cash_withdrawal_charge,wrong_exchange_rate_for_cash_withdrawal,other_misclassification,when i got cash i am pretty sure there was a glitch that overcharged me
+test_02939,card_about_to_expire,order_physical_card,other_misclassification,i will need to get a new card soon how do i order
+test_03005,verify_my_identity,why_verify_identity,other_misclassification,what do you need for my identity check
+test_03012,verify_my_identity,why_verify_identity,other_misclassification,i need to verify my identity
+test_03013,verify_my_identity,unable_to_verify_identity,other_misclassification,i need some help with identity verification
+test_03020,verify_my_identity,unable_to_verify_identity,other_misclassification,how does my identity get verified
+test_03024,verify_my_identity,edit_personal_details,other_misclassification,do the details of my profile have to match my documents
+test_03035,verify_my_identity,why_verify_identity,other_misclassification,is there any way to verify who i am
+test_03058,country_support,atm_support,other_misclassification,where can i find your locations
