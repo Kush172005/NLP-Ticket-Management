@@ -1,0 +1,30 @@
+{
+  "url": "http://127.0.0.1:8000",
+  "python_version": "3.14.4",
+  "platform": "macOS-27.2-arm64-arm-64bit-Mach-O",
+  "requests": 100,
+  "successful_predictions": 100,
+  "success_rate": 1.0,
+  "latency_ms": {
+    "mean": 0.96,
+    "median": 0.88,
+    "p95": 1.28,
+    "p99": 2.15
+  },
+  "throughput_requests_per_second": 1042.34,
+  "sample_suggestion": "pending_card_payment",
+  "measurement_note": "Sequential localhost requests; includes HTTP connection overhead; not a production load test.",
+  "service_metrics_after_run": {
+    "uptime_seconds": 21.85,
+    "model_ready": true,
+    "prediction_requests": 202,
+    "successful_predictions": 201,
+    "client_errors": 1,
+    "server_errors": 0,
+    "average_latency_ms": 0.59,
+    "predictions_by_intent": {
+      "pending_card_payment": 201
+    },
+    "note": "Counters are in memory and reset when this prototype restarts."
+  }
+}

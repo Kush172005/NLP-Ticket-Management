@@ -1,9 +1,9 @@
 # Ticket Management System
 
-**Banking support ticket classification · Industry Track · M1, M2 and M3**
+**Banking support ticket classification · Industry Track · M1–M5**
 
-This project defines the business case, prepares Banking77 data and compares text-classification
-models. M3 validation and final test results are recorded in `reports/m3_summary.json`.
+This project defines the business case, prepares Banking77 data, develops and evaluates intent
+models, and provides a local API prototype.
 
 ## Start here
 
@@ -13,6 +13,7 @@ models. M3 validation and final test results are recorded in `reports/m3_summary
 3. Read `docs/DATA_CARD.md` for the dataset, preparation decisions, split policy and privacy limits.
 4. Open `presentation/M1_M2_Evaluation.pptx` for the milestone presentation.
 5. Read `docs/M3_MODEL_DEVELOPMENT.md` for the model comparison and results.
+6. Read `docs/M4_EVALUATION.md` and `docs/M5_DEPLOYMENT.md` for evaluation and the local API prototype.
 
 ## Setup
 
@@ -57,6 +58,17 @@ python m4_evaluation.py
 python predict_ticket.py "my card payment is pending"
 ```
 
+Run the M5 local API and measure it from another terminal:
+
+```bash
+python api.py
+python benchmark_api.py --requests 100
+```
+
+The API listens on `127.0.0.1` by default. It provides `/health`, `/ready`, `/metrics`, and
+`POST /predict`. See `docs/M5_DEPLOYMENT.md` for the request format, failure behavior and monitoring.
+With the API running, open a second terminal and run `python demo_live.py` for a guided demonstration.
+
 Training compares a majority guess, a word TF-IDF logistic regression baseline and a word+character
 TF-IDF linear SVM. It chooses by validation macro F1, then evaluates the selected model once on test.
 Milestone 4 checks a small SVM setting search, analyzes test errors, and runs controlled robustness
@@ -94,10 +106,13 @@ of the retained training source. Grouping can change the exact fraction and labe
 | `reporting.py` | Static charts, HTML report and generated data card |
 | `verify.py` | Independently check saved artifacts against source files |
 | `demo.py` | Terminal walkthrough and text-cleaning demo |
+| `api.py` | Local HTTP prediction service with health and metrics endpoints |
+| `benchmark_api.py` | Sequential local API latency measurement |
+| `demo_live.py` | Demonstrates API readiness, prediction, input failure handling, and metrics |
 | `data/raw/` | Publisher's original files, unmodified |
 | `data/processed/` | Prepared train, validation and test CSVs |
 | `reports/` | Evidence from the actual preprocessing run |
-| `docs/` | M1 brief, data card, audit and evaluation guide |
+| `docs/` | M1 brief, data card, audit, evaluation and deployment guides |
 | `presentation/` | Local evaluation slides |
 | `tests/` | Regression checks for cleaning, grouping and source verification |
 
