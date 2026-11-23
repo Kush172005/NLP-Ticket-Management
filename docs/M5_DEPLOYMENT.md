@@ -2,8 +2,9 @@
 
 ## What is running
 
-`api.py` serves the saved intent model as a small, UI-free HTTP API. Interact with it from a terminal
-using `curl` or `demo_live.py`; there is no browser dashboard. It listens only on your own computer
+`api.py` serves the saved intent model as a small local HTTP API and serves the ticket intelligence
+dashboard at `http://127.0.0.1:8000/`. The admin review queue is at
+`http://127.0.0.1:8000/admin/review`. It listens only on your own computer
 (`127.0.0.1:8000`) by default. This is a working local deployment prototype, not a public cloud
 service. The model is loaded once when the server starts. Do not bind it to a public network: the
 prototype has no login or rate limiting. Change the bind address only in a trusted development
@@ -23,6 +24,15 @@ curl -X POST http://127.0.0.1:8000/predict \
   -d '{"text":"my card payment is pending"}'
 ```
 
+You can also enter a message in the local dashboard. A successful prediction is now saved in the
+local SQLite database at `data/tickets.sqlite3` so it can appear in the review queue and support a
+persistent approval/correction audit trail. This database is ignored by Git and stays on this
+computer. It stores the original ticket text: use only sample or otherwise approved data in this
+classroom prototype, and delete the database when you no longer need its records. There is no
+authentication or role system, so it is not suitable for real customer data or public deployment.
+The dashboard measures client round-trip time because the prediction response does not contain a
+server-side latency field.
+
 The response contains the top suggestion, two alternatives, a request ID, and a reminder for an
 agent to review it. Ranking scores are not returned because they are not probabilities.
 
@@ -30,10 +40,38 @@ agent to review it. Ranking scores are not returned because they are not probabi
 
 | Endpoint | Purpose |
 |---|---|
+| `GET /` | Serves the responsive local dashboard. |
+| `GET /project_journey.html` | Serves the M1–M5 evidence pages used by the dashboard navigation. |
+| `GET /admin/review` | Serves the bank-style admin review queue. |
+| `GET /tickets/review-queue` | Lists real, locally persisted tickets awaiting review. |
+| `GET /tickets/summary` | Returns persisted review counts and average review duration. |
+| `GET /tickets/operations` | Returns persisted lifecycle totals and tickets by department. |
+| `GET /tickets/feedback` | Returns approval/correction agreement summaries from saved decisions. |
+| `GET /tickets/labels` | Returns the actual 77 project intent labels for corrections. |
+| `GET /departments` | Returns the centralized mapping of all 77 labels to exactly one department. |
+| `GET /agents` | Returns clearly marked demo-agent names by department. |
+| `GET /tickets` / `GET /tickets/{id}` | Lists saved tickets or one ticket with its audit events. |
+| `POST /tickets/{id}/start-review` | Records when a reviewer opens a ticket. |
+| `POST /tickets/{id}/approve` | Verifies the AI intent and routes the ticket. |
+| `POST /tickets/{id}/correct` | Saves a selected project label and routes the ticket. |
+| `POST /tickets/{id}/assign` | Assigns a demo agent from the ticket's routed department. |
+| `POST /tickets/{id}/start` | Starts work after an agent is assigned; status becomes `IN_PROGRESS`. |
+| `POST /tickets/{id}/notes` | Saves a human-entered internal note during work. |
+| `POST /tickets/{id}/resolve` | Saves a required resolution summary and marks the ticket `RESOLVED`. |
 | `GET /health` | Shows whether the service process is alive and whether the model loaded. |
 | `GET /ready` | Returns success only when the model is ready to answer requests. |
 | `GET /metrics` | Shows request totals, failures, average latency, uptime and aggregate predicted-label counts. |
 | `POST /predict` | Accepts `{"text":"..."}` and returns an intent suggestion. |
+
+The prediction response retains its original fields and now also returns `ticket_id` after the
+prediction is saved. The API still does not return confidence or priority. Routing is a centralized
+prototype mapping in `ticket_routing.py`, not a bank-approved policy. It is checked against all 77
+dataset labels at startup and assigns each label to exactly one department. The departments are
+business-rule groupings inferred from label names; Banking77 does not include bank queues.
+Reviewers are recorded as `Admin (local prototype)` because the project has no sign-in or role
+enforcement. Generic names in the agent selector are demo data, not real bank employees. After
+verification, an admin can assign a demo agent, start work, add internal notes, and resolve the
+ticket with a required summary. These actions persist locally and create audit events.
 
 ## Failure handling
 
@@ -45,9 +83,11 @@ agent to review it. Ranking scores are not returned because they are not probabi
 - Unexpected model error: return a generic `500` with a request ID. Logs contain the error type,
   not the submitted message or stack trace.
 
-No input message is written to the logs or stored by the API. Metrics are aggregated in memory and
-reset when the process restarts. This is appropriate for a classroom prototype; a real service would
-need durable monitoring, access controls, request-rate limits, HTTPS and an approved privacy design.
+Input messages and agent notes are not written to logs, but successful predictions, human decisions,
+agent notes, and resolution summaries are retained in the ignored local SQLite database. Service
+metrics are aggregated in memory and reset when the process restarts. This is appropriate for a classroom prototype; a real service would need durable
+monitoring, access controls, request-rate limits, HTTPS, retention controls, and an approved privacy
+design.
 
 ## Monitoring plan
 

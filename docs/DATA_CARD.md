@@ -119,7 +119,12 @@ Regexes can miss names, addresses, alphanumeric account IDs and unusual number f
 No names or addresses are reliably anonymized here. Do not enter real customer details
 in the demo. Use the publisher's examples for evaluation. Review redaction manually before
 sharing derived data. Limit access and retention for any future private tickets.
-The local demo does not upload ticket inputs to any service and does not save inputs.
+The local demo runs on `127.0.0.1` and does not upload ticket inputs to a third-party service.
+For the Admin Review workflow, successful prediction inputs are retained in the local, Git-ignored
+SQLite file `data/tickets.sqlite3` so a support reviewer can inspect the ticket and preserve the
+classification decision, audit history, agent-entered internal notes, and resolution summary. Do not use real customer data in this classroom prototype:
+the database has no automatic retention or deletion policy, and the prototype has no sign-in or
+role-based access control. Remove the local database file to delete its stored ticket records.
 
 ## Coverage and limits
 

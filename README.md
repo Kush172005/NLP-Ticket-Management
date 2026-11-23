@@ -66,8 +66,14 @@ python benchmark_api.py --requests 100
 ```
 
 The API listens on `127.0.0.1` by default. It provides `/health`, `/ready`, `/metrics`, and
-`POST /predict`. See `docs/M5_DEPLOYMENT.md` for the request format, failure behavior and monitoring.
-With the API running, open a second terminal and run `python demo_live.py` for a guided demonstration.
+`POST /predict`. With the API running, open `http://127.0.0.1:8000` for the local ticket intelligence
+dashboard, or run `python demo_live.py` in a second terminal for the guided terminal demonstration.
+Open `http://127.0.0.1:8000/admin/review` for the bank-style review workflow. Successful
+predictions are saved in an ignored local SQLite database; use sample text only. See
+`docs/M5_DEPLOYMENT.md` for the review endpoints, request format, failure behavior and monitoring.
+The workflow maps every dataset label to a department, then supports demo-agent assignment,
+work-in-progress notes and resolution summaries. Department rules and demo agent names are local
+prototype data, not verified bank policy or real employee accounts.
 
 Training compares a majority guess, a word TF-IDF logistic regression baseline and a word+character
 TF-IDF linear SVM. It chooses by validation macro F1, then evaluates the selected model once on test.
@@ -107,6 +113,13 @@ of the retained training source. Grouping can change the exact fraction and labe
 | `verify.py` | Independently check saved artifacts against source files |
 | `demo.py` | Terminal walkthrough and text-cleaning demo |
 | `api.py` | Local HTTP prediction service with health and metrics endpoints |
+| `ticket_store.py` | Local SQLite ticket state, human review, agent work, resolution and audit events |
+| `ticket_routing.py` | Centrally validated mapping for all 77 intents plus demo-agent choices |
+| `docs/INTENT_DEPARTMENT_MAP.md` | Human-readable routing table for all 77 actual labels |
+| `web/admin_review.html` | Bank operations queue, ticket detail drawer and lifecycle controls |
+| `web/admin_review.js` | Review, routing, agent assignment, work notes, resolution and audit interactions |
+| `web/index.html` | Responsive browser dashboard served by the local API |
+| `web/project_journey.html` | M1–M5 project evidence, model comparison and measured results |
 | `benchmark_api.py` | Sequential local API latency measurement |
 | `demo_live.py` | Demonstrates API readiness, prediction, input failure handling, and metrics |
 | `data/raw/` | Publisher's original files, unmodified |
