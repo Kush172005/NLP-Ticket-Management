@@ -26,7 +26,7 @@
     "matplotlib": "3.10.8"
   },
   "code": {
-    "api.py": "465fe008425f61eaa895a9a3fd29faeed0d2d9183002184c532745ef5ebaba80",
+    "api.py": "6a3b7a64bee5619b01144819ed4dbc33485837d64b92ef14cd22033075742289",
     "benchmark_api.py": "b96b759dcda09de8af883075d517881a4c364570ba9711e706726fbb8e384e3e",
     "config.py": "60e6ec77f849d7724338776aab32f7be7104df8ca626a718a7f97ac3d36dbb74",
     "data_loader.py": "a361162e550901ac32ca3fb0fae1ea31c241e2bc12650999c485f8dc0bb90bfb",
@@ -64,5 +64,6 @@
     "reports/removed_rows.csv": "57eb6c802382f2c9fba73c43b0207190bcbc946d5a171dd6b4734dec848d100f",
     "reports/test_classification_report.json": "5909d17b423091e7b4d981755496d6d0861250485485c61eeec0a113db6d6feb",
     "reports/ticket_lengths.png": "6e37a65e0a8ad106ed62f832201e3257d216905d6a0dd5b88c0b6b2b6296febe"
-  }
+  },
+  "api_fingerprint_note": "The API fingerprint was refreshed after the ticket workflow changed; M2 data and preprocessing fingerprints were not changed."
 }

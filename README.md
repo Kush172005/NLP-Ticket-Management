@@ -75,6 +75,24 @@ The workflow maps every dataset label to a department, then supports demo-agent 
 work-in-progress notes and resolution summaries. Department rules and demo agent names are local
 prototype data, not verified bank policy or real employee accounts.
 
+## Simple evaluation demo
+
+On the computer where the environment has been set up, run:
+
+```bash
+cd /Users/Kush/Downloads/EndSem/Ticket_Management_System
+source .venv/bin/activate
+python api.py
+```
+
+Leave that terminal open and visit `http://127.0.0.1:8000`. Select **Analyze a ticket**,
+try **Card payment pending**, and click **Suggest Intent**. Open the saved ticket's review
+link, approve or correct the suggested intent, assign a demo agent, start work, add a note,
+and resolve it with a summary. The audit trail shows the steps taken. Use sample text only:
+successful requests are saved in a local database. Press Ctrl+C in the terminal to stop the API.
+The path in the first command is specific to this computer; on another computer, use that
+computer's project folder instead.
+
 Training compares a majority guess, a word TF-IDF logistic regression baseline and a word+character
 TF-IDF linear SVM. It chooses by validation macro F1, then evaluates the selected model once on test.
 Milestone 4 checks a small SVM setting search, analyzes test errors, and runs controlled robustness
